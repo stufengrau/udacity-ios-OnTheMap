@@ -52,6 +52,9 @@
                                         <rect key="frame" x="0.0" y="104.5" width="343" height="30"/>
                                         <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cg0-Kq-phm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -59,6 +62,9 @@
                                 <rect key="frame" x="16" y="406.5" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Don't have an account? Sign Up"/>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IGS-0k-Fyw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1657515913" green="0.19940866530000001" blue="0.2393306047" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -73,9 +79,43 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lVE-Bk-nbf" secondAttribute="trailing" id="sMR-Eb-5IO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="HJ1-GJ-fge" id="shR-Li-BNJ"/>
+                        <outlet property="loginButton" destination="DJ1-xh-hZf" id="siL-2b-WfJ"/>
+                        <outlet property="passwordTextField" destination="VS5-O8-B8W" id="wYG-PJ-bJS"/>
+                        <outlet property="signUpButton" destination="lVE-Bk-nbf" id="cAP-1g-FS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="438" y="45"/>
+        </scene>
+        <!--studentLocations-->
+        <scene sceneID="yyE-0j-c0V">
+            <objects>
+                <viewController storyboardIdentifier="studentLocationsView" title="studentLocations" id="vWx-6m-tcg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aah-99-9qf"/>
+                        <viewControllerLayoutGuide type="bottom" id="TDC-yc-p6C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="woy-bn-fFp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login successful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOO-sy-8PI">
+                                <rect key="frame" x="123" y="283" width="128" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1b-Lb-h1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1259" y="51"/>
         </scene>
     </scenes>
     <resources>
