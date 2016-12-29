@@ -55,6 +55,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E21C20981E155C68005E48A9 /* NetworkCode */ = {
+			isa = PBXGroup;
+			children = (
+				E23C9E1E1E154D0F0004BAD9 /* HiddenConstants.swift */,
+				E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */,
+				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
+				E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */,
+				E23C9E111E15314B0004BAD9 /* ParseAPI.swift */,
+				E23C9E131E1531620004BAD9 /* ParseConstants.swift */,
+			);
+			name = NetworkCode;
+			sourceTree = "<group>";
+		};
 		E23C9DE51E1309AF0004BAD9 = {
 			isa = PBXGroup;
 			children = (
@@ -74,19 +87,14 @@
 		E23C9DF01E1309AF0004BAD9 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				E21C20981E155C68005E48A9 /* NetworkCode */,
 				E23C9DF11E1309AF0004BAD9 /* AppDelegate.swift */,
 				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
-				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
-				E23C9E111E15314B0004BAD9 /* ParseAPI.swift */,
-				E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */,
-				E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */,
-				E23C9E131E1531620004BAD9 /* ParseConstants.swift */,
-				E23C9E1E1E154D0F0004BAD9 /* HiddenConstants.swift */,
+				E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */,
+				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
 				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
 				E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */,
 				E23C9DF51E1309AF0004BAD9 /* Main.storyboard */,
-				E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */,
-				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
 				E23C9DF81E1309AF0004BAD9 /* Assets.xcassets */,
 				E23C9DFA1E1309AF0004BAD9 /* LaunchScreen.storyboard */,
 				E23C9DFD1E1309AF0004BAD9 /* Info.plist */,
@@ -340,6 +348,7 @@
 				E23C9E021E1309AF0004BAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
