@@ -175,13 +175,13 @@
         <!--sudentsTable-->
         <scene sceneID="0aX-cN-gAB">
             <objects>
-                <tableViewController title="sudentsTable" id="48z-DD-UVb" sceneMemberID="viewController">
+                <tableViewController title="sudentsTable" id="48z-DD-UVb" customClass="StudentsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dt7-T1-pj8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5Wb-AB-vee">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5Wb-AB-vee" customClass="StudentsTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wb-AB-vee" id="JfP-LG-CUn">
@@ -201,6 +201,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="studentsName" destination="VwZ-Cf-OaK" id="5HS-2r-VVp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

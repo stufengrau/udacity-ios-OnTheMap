@@ -15,6 +15,9 @@
 		E23C9E041E130FA90004BAD9 /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */; };
 		E23C9E061E1407D10004BAD9 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */; };
 		E23C9E081E151FC60004BAD9 /* StudentsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */; };
+		E23C9E0A1E152B1C0004BAD9 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */; };
+		E23C9E0C1E152B340004BAD9 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */; };
+		E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsMapViewController.swift; sourceTree = "<group>"; };
+		E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
+		E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
+		E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +70,10 @@
 				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
 				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
 				E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */,
+				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
+				E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */,
 				E23C9DF51E1309AF0004BAD9 /* Main.storyboard */,
+				E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */,
 				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
 				E23C9DF81E1309AF0004BAD9 /* Assets.xcassets */,
 				E23C9DFA1E1309AF0004BAD9 /* LaunchScreen.storyboard */,
@@ -146,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */,
 				E23C9DF41E1309AF0004BAD9 /* LoginViewController.swift in Sources */,
 				E23C9E061E1407D10004BAD9 /* UdacityConstants.swift in Sources */,
+				E23C9E0C1E152B340004BAD9 /* StudentsTableViewCell.swift in Sources */,
 				E23C9E081E151FC60004BAD9 /* StudentsMapViewController.swift in Sources */,
+				E23C9E0A1E152B1C0004BAD9 /* StudentsTableViewController.swift in Sources */,
 				E23C9DF21E1309AF0004BAD9 /* AppDelegate.swift in Sources */,
 				E23C9E041E130FA90004BAD9 /* UdacityAPI.swift in Sources */,
 			);

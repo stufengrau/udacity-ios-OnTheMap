@@ -11,6 +11,10 @@ import MapKit
 
 class StudentsMapViewController: UIViewController, MKMapViewDelegate {
 
+    var students: [StudentInformation] {
+        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
