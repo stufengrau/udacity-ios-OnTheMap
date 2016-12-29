@@ -8,18 +8,15 @@
 
 import Foundation
 
-// TODO: String weg
 enum LoginResult {
-    case success(String)
+    case success
     case networkFailure
     case loginFailure
 }
 
 
 
-class UdacityAPI {
-    
-    private var userID: String?
+class UdacityAPI: NetworkAPI {
     
     var session = URLSession.shared
     
@@ -53,14 +50,13 @@ class UdacityAPI {
             
             debugPrint("Parsed JSON Data: \(parsedResult)")
             
-            // TODO: userid speichern in variable
-            completionHandler(.success(userID))
+            self.userID = userID
+            completionHandler(.success)
             
         }
         task.resume()
         
     }
-    
     
     // create a URL from parameters
     private func udacityURLFromParameters(withPathExtension: String? = nil) -> URL {

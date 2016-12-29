@@ -53,8 +53,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.showAlert("Network failure")
             case .loginFailure:
                 self.showAlert("Invalid Email or Password")
-            case .success(let userID):
-                debugPrint(userID)
+            case .success:
                 self.completeLogin()
             }
         }
@@ -69,7 +68,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alertController.addAction(dismissAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        
     }
     
     private func completeLogin() {
