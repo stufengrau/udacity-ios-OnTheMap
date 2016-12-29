@@ -18,6 +18,10 @@
 		E23C9E0A1E152B1C0004BAD9 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */; };
 		E23C9E0C1E152B340004BAD9 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */; };
 		E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */; };
+		E23C9E101E152F0B0004BAD9 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */; };
+		E23C9E121E15314B0004BAD9 /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E111E15314B0004BAD9 /* ParseAPI.swift */; };
+		E23C9E141E1531620004BAD9 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E131E1531620004BAD9 /* ParseConstants.swift */; };
+		E23C9E1F1E154D0F0004BAD9 /* HiddenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E1E1E154D0F0004BAD9 /* HiddenConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
 		E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
 		E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		E23C9E111E15314B0004BAD9 /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
+		E23C9E131E1531620004BAD9 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		E23C9E1E1E154D0F0004BAD9 /* HiddenConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +77,11 @@
 				E23C9DF11E1309AF0004BAD9 /* AppDelegate.swift */,
 				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
 				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
+				E23C9E111E15314B0004BAD9 /* ParseAPI.swift */,
+				E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */,
 				E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */,
+				E23C9E131E1531620004BAD9 /* ParseConstants.swift */,
+				E23C9E1E1E154D0F0004BAD9 /* HiddenConstants.swift */,
 				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
 				E23C9E0B1E152B340004BAD9 /* StudentsTableViewCell.swift */,
 				E23C9DF51E1309AF0004BAD9 /* Main.storyboard */,
@@ -155,8 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23C9E121E15314B0004BAD9 /* ParseAPI.swift in Sources */,
+				E23C9E1F1E154D0F0004BAD9 /* HiddenConstants.swift in Sources */,
 				E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */,
+				E23C9E141E1531620004BAD9 /* ParseConstants.swift in Sources */,
 				E23C9DF41E1309AF0004BAD9 /* LoginViewController.swift in Sources */,
+				E23C9E101E152F0B0004BAD9 /* NetworkAPI.swift in Sources */,
 				E23C9E061E1407D10004BAD9 /* UdacityConstants.swift in Sources */,
 				E23C9E0C1E152B340004BAD9 /* StudentsTableViewCell.swift in Sources */,
 				E23C9E081E151FC60004BAD9 /* StudentsMapViewController.swift in Sources */,
