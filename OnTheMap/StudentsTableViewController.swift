@@ -14,7 +14,6 @@ class StudentsTableViewController: UITableViewController {
     var students: [StudentInformation] {
         return (UIApplication.shared.delegate as! AppDelegate).studentInformations
     }
-        //(UIApplication.shared.delegate as! AppDelegate).studentInformations = result
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +21,15 @@ class StudentsTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         debugPrint(students.count)
         return students.count
     }
@@ -54,6 +43,11 @@ class StudentsTableViewController: UITableViewController {
         cell.studentsName.text = "\(student.firstName) \(student.lastName)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mediaURL = students[indexPath.row].mediaURL
+        UIApplication.shared.open(URL(string: mediaURL)!, options: [:], completionHandler: nil)
     }
     
     private func getStudentInformations() {
