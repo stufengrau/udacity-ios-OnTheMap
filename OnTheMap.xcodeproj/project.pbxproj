@@ -14,6 +14,7 @@
 		E23C9DFC1E1309AF0004BAD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23C9DFA1E1309AF0004BAD9 /* LaunchScreen.storyboard */; };
 		E23C9E041E130FA90004BAD9 /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */; };
 		E23C9E061E1407D10004BAD9 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */; };
+		E23C9E081E151FC60004BAD9 /* StudentsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E23C9DFD1E1309AF0004BAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
 				E23C9E051E1407D10004BAD9 /* UdacityConstants.swift */,
 				E23C9DF51E1309AF0004BAD9 /* Main.storyboard */,
+				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
 				E23C9DF81E1309AF0004BAD9 /* Assets.xcassets */,
 				E23C9DFA1E1309AF0004BAD9 /* LaunchScreen.storyboard */,
 				E23C9DFD1E1309AF0004BAD9 /* Info.plist */,
@@ -145,6 +148,7 @@
 			files = (
 				E23C9DF41E1309AF0004BAD9 /* LoginViewController.swift in Sources */,
 				E23C9E061E1407D10004BAD9 /* UdacityConstants.swift in Sources */,
+				E23C9E081E151FC60004BAD9 /* StudentsMapViewController.swift in Sources */,
 				E23C9DF21E1309AF0004BAD9 /* AppDelegate.swift in Sources */,
 				E23C9E041E130FA90004BAD9 /* UdacityAPI.swift in Sources */,
 			);
