@@ -58,6 +58,41 @@ class UdacityAPI: NetworkAPI {
         
     }
     
+    
+    func logout() {
+        
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: Methods.Session))
+        
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if error != nil {
+                return
+            }
+            
+            let range = Range(uncheckedBounds: (5, data!.count))
+            let newData = data?.subdata(in: range)
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            
+            self.userID = nil
+            
+        }
+        
+        task.resume()
+    }
+    
     // create a URL from parameters
     private func udacityURLFromParameters(withPathExtension: String? = nil) -> URL {
         

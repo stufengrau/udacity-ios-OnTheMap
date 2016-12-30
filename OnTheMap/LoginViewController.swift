@@ -36,7 +36,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func signUpPressed(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: "https://www.udacity.com/account/auth#!/signup")!, options: [:], completionHandler: nil)
+        let signUpURL = "https://www.udacity.com/account/auth#!/signup"
+        UIApplication.shared.open(URL(string: signUpURL)!, options: [:], completionHandler: nil)
     }
     
     
@@ -73,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func completeLogin() {
         DispatchQueue.main.async {
             self.enableUI(true)
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: "testLoginView")
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "studentLocationsView")
             self.present(controller, animated: true, completion: nil)
         }
         

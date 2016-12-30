@@ -23,8 +23,23 @@ class StudentsTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
     }
 
+    
+    
+    @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
+        UdacityAPI.sharedInstance().logout()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
+        getStudentInformations()
+    }
+    
+    @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
+    }
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

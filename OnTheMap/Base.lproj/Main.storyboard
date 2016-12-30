@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="45"/>
+            <point key="canvasLocation" x="1276" y="56"/>
         </scene>
         <!--testLogin-->
         <scene sceneID="yyE-0j-c0V">
@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1b-Lb-h1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259" y="51"/>
+            <point key="canvasLocation" x="1494" y="784"/>
         </scene>
         <!--studentsMap-->
         <scene sceneID="Aqu-aH-wAq">
@@ -146,10 +146,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="Wvi-5d-SPq">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="n4h-Q2-AA2"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="n4h-Q2-AA2">
+                            <connections>
+                                <action selector="logoutPressed:" destination="dDR-ST-kOx" id="NzT-X8-G2O"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="RefreshIcon" id="zft-P3-9t9"/>
-                            <barButtonItem image="PinIcon" id="bKZ-Wo-0gR"/>
+                            <barButtonItem image="RefreshIcon" id="zft-P3-9t9">
+                                <connections>
+                                    <action selector="refreshPressed:" destination="dDR-ST-kOx" id="gaz-Ga-QNF"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="PinIcon" id="bKZ-Wo-0gR">
+                                <connections>
+                                    <action selector="pinLocationPressed:" destination="dDR-ST-kOx" id="TcQ-o8-f6c"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -163,7 +175,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="XWP-L9-oy7">
             <objects>
-                <tabBarController id="pGp-Vc-5rw" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="studentLocationsView" id="pGp-Vc-5rw" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="OyH-ex-yqx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -191,7 +203,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wb-AB-vee" id="JfP-LG-CUn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PinIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u7b-xU-Ypm">
@@ -218,10 +230,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On the Map" id="W2a-jN-6mS">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="LSq-nt-aiz"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="LSq-nt-aiz">
+                            <connections>
+                                <action selector="logoutPressed:" destination="48z-DD-UVb" id="BDC-HU-T1W"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="RefreshIcon" id="pdy-17-p0o"/>
-                            <barButtonItem image="PinIcon" id="w3P-MA-n5h"/>
+                            <barButtonItem image="RefreshIcon" id="pdy-17-p0o">
+                                <connections>
+                                    <action selector="refreshPressed:" destination="48z-DD-UVb" id="k2d-ZW-gTF"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="PinIcon" id="w3P-MA-n5h">
+                                <connections>
+                                    <action selector="pinLocationPressed:" destination="48z-DD-UVb" id="lff-U5-qrx"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>

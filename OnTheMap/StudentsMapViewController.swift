@@ -23,6 +23,18 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         getStudentInformations()
     }
     
+    @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
+        UdacityAPI.sharedInstance().logout()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
+        getStudentInformations()
+    }
+    
+    @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
+    }
+    
     private func getStudentInformations() {
         debugPrint("getStudentInformations called.")
         ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult, studentInformations) in
