@@ -10,6 +10,6 @@ import Foundation
 
 class NetworkAPI {
     
-     var userID: String?
+     //var userID: String?
     
 }

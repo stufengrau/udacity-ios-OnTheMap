@@ -18,7 +18,8 @@ enum LoginResult {
 
 class UdacityAPI: NetworkAPI {
     
-    var session = URLSession.shared
+    private var session = URLSession.shared
+    var userID: String?
     
     func login(email: String, password: String, completionHandler: @escaping (LoginResult) -> Void) {
         
