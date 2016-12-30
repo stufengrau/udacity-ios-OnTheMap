@@ -74,6 +74,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func completeLogin() {
         DispatchQueue.main.async {
             self.enableUI(true)
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "studentLocationsView")
             self.present(controller, animated: true, completion: nil)
         }
