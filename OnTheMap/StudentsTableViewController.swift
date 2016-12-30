@@ -11,9 +11,11 @@ import UIKit
 class StudentsTableViewController: UITableViewController {
 
     
-    var students: [StudentInformation] {
-        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
-    }
+//    var students: [StudentInformation] {
+//        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
+//    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +47,14 @@ class StudentsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        debugPrint(students.count)
-        return students.count
+        debugPrint(ParseAPI.sharedInstance().studentInformations.count)
+        return ParseAPI.sharedInstance().studentInformations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath)
-        let student = students[indexPath.row]
+        let student = ParseAPI.sharedInstance().studentInformations[indexPath.row]
         
         cell.detailTextLabel?.text = student.mediaURL
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
@@ -62,19 +64,18 @@ class StudentsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let mediaURL = URL(string: students[indexPath.row].mediaURL) {
+        if let mediaURL = URL(string: ParseAPI.sharedInstance().studentInformations[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
         }
     }
     
     private func getStudentInformations() {
         debugPrint("getStudentInformations called.")
-        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult, studentInformations) in
+        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
             switch(networkRequestResult) {
             case .networkFailure:
                 self.showAlert("Download of Student Informations failed. Try again later.")
             case .success:
-                (UIApplication.shared.delegate as! AppDelegate).studentInformations = studentInformations
                 self.refreshData()
             }
         }

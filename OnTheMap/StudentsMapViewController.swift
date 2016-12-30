@@ -14,9 +14,9 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
 
-    var students: [StudentInformation] {
-        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
-    }
+//    var students: [StudentInformation] {
+//        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,12 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     private func getStudentInformations() {
         debugPrint("getStudentInformations called.")
-        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult, studentInformations) in
+        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
             switch(networkRequestResult) {
             case .networkFailure:
                 self.showAlert("Download of Student Informations failed. Try again later.")
             case .success:
-                (UIApplication.shared.delegate as! AppDelegate).studentInformations = studentInformations
-                debugPrint(self.students.count)
+                debugPrint(ParseAPI.sharedInstance().studentInformations.count)
                 self.refreshData()
             }
         }
@@ -55,7 +54,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
 
         var annotations = [MKPointAnnotation]()
         
-        for student in students {
+        for student in ParseAPI.sharedInstance().studentInformations {
             
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.
@@ -81,7 +80,6 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         
         // When the array is complete, we add the annotations to the map.
         debugPrint(annotations.count)
-        debugPrint(annotations[0])
         self.mapView.addAnnotations(annotations)
 
     }

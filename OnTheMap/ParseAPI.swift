@@ -15,9 +15,10 @@ enum NetworkRequestResult {
 
 class ParseAPI: NetworkAPI {
     
-    var session = URLSession.shared
+    private var session = URLSession.shared
+    var studentInformations = [StudentInformation]()
     
-    func getStudentLocations(completionHandler: @escaping (NetworkRequestResult, [StudentInformation]) -> Void) {
+    func getStudentLocations(completionHandler: @escaping (NetworkRequestResult) -> Void) {
         
         let request = NSMutableURLRequest(url: parseURLFromParameters(withPathExtension: Methods.StudentLocation))
         
@@ -28,11 +29,11 @@ class ParseAPI: NetworkAPI {
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error...
                 debugPrint("error is not nil")
-                completionHandler(.networkFailure, [])
+                completionHandler(.networkFailure)
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                completionHandler(.networkFailure, [])
+                completionHandler(.networkFailure)
                 return
             }
             
@@ -40,11 +41,12 @@ class ParseAPI: NetworkAPI {
             
             guard let parsedResult = self.convertData(data) as? [String: AnyObject] else {
                 debugPrint("Error parsing JSON Data")
-                completionHandler(.networkFailure, [])
+                completionHandler(.networkFailure)
                 return
             }
             
-            completionHandler(.success, createStudentLocations(parsedResult))
+            self.studentInformations = createStudentLocations(parsedResult)
+            completionHandler(.success)
             
         }
         task.resume()
