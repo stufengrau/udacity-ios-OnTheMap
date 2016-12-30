@@ -11,12 +11,7 @@ import MapKit
 
 class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
-    
     @IBOutlet weak var mapView: MKMapView!
-
-//    var students: [StudentInformation] {
-//        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,16 +83,6 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         DispatchQueue.main.async {
             self.createAnnotations()
       }
-    }
-    
-    private func showAlert(_ errormessage: String) {
-        DispatchQueue.main.async {
-            //self.enableUI(true)
-            let alertController = UIAlertController(title: "", message: errormessage, preferredStyle: .alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-            alertController.addAction(dismissAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
     }
     
     // MARK: - MKMapViewDelegate

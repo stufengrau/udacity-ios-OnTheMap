@@ -9,14 +9,7 @@
 import UIKit
 
 class StudentsTableViewController: UITableViewController {
-
-    
-//    var students: [StudentInformation] {
-//        return (UIApplication.shared.delegate as! AppDelegate).studentInformations
-//    }
-    
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         getStudentInformations()
@@ -24,8 +17,6 @@ class StudentsTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
-
-    
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         UdacityAPI.sharedInstance().logout()
@@ -86,17 +77,6 @@ class StudentsTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
-    private func showAlert(_ errormessage: String) {
-        DispatchQueue.main.async {
-            //self.enableUI(true)
-            let alertController = UIAlertController(title: "", message: errormessage, preferredStyle: .alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-            alertController.addAction(dismissAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-
 
     /*
     // Override to support conditional editing of the table view.

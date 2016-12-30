@@ -49,6 +49,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func loginToUdacity(_ email: String, _ password: String) {
         
         UdacityAPI.sharedInstance().login(email: email, password: password) { (result) in
+            self.enableUI(true)
             switch(result) {
             case .networkFailure:
                 self.showAlert("Network failure")
@@ -60,20 +61,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-
-    private func showAlert(_ errormessage: String) {
-        DispatchQueue.main.async {
-            self.enableUI(true)
-            let alertController = UIAlertController(title: "", message: errormessage, preferredStyle: .alert)
-            let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-            alertController.addAction(dismissAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
     private func completeLogin() {
         DispatchQueue.main.async {
-            self.enableUI(true)
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "studentLocationsView")
@@ -83,15 +72,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func enableUI(_ enabled: Bool) {
-        emailTextField.isEnabled = enabled
-        passwordTextField.isEnabled = enabled
-        loginButton.isEnabled = enabled
-        signUpButton.isEnabled = enabled
-        
-        if enabled {
-            loginButton.alpha = 1.0
-        } else {
-            loginButton.alpha = 0.5
+        DispatchQueue.main.async {
+            self.emailTextField.isEnabled = enabled
+            self.passwordTextField.isEnabled = enabled
+            self.loginButton.isEnabled = enabled
+            self.signUpButton.isEnabled = enabled
+            
+            if enabled {
+                self.loginButton.alpha = 1.0
+            } else {
+                self.loginButton.alpha = 0.5
+            }
         }
     }
     
