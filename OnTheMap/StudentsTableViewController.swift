@@ -51,11 +51,12 @@ class StudentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath) as! StudentsTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath)
         let student = students[indexPath.row]
         
-        cell.studentsName.text = "\(student.firstName) \(student.lastName)"
+        cell.detailTextLabel?.text = student.mediaURL
+        cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.imageView?.image = UIImage(named: "PinIcon")
         
         return cell
     }
