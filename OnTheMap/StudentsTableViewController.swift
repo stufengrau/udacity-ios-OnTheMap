@@ -61,8 +61,9 @@ class StudentsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mediaURL = students[indexPath.row].mediaURL
-        UIApplication.shared.open(URL(string: mediaURL)!, options: [:], completionHandler: nil)
+        if let mediaURL = URL(string: students[indexPath.row].mediaURL) {
+            UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
+        }
     }
     
     private func getStudentInformations() {
