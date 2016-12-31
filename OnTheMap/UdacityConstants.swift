@@ -29,4 +29,9 @@ extension UdacityAPI {
         
     }
     
+    // MARK: URL Keys
+    struct URLKeys {
+        static let UserID = "id"
+    }
+    
 }

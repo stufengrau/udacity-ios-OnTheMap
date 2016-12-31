@@ -14,14 +14,14 @@ enum LoginResult {
     case loginFailure
 }
 
-
-
 class UdacityAPI: NetworkAPI {
     
     private var session = URLSession.shared
     var userID: String?
+    var firstName: String?
+    var lastName: String?
     
-    func login(email: String, password: String, completionHandler: @escaping (LoginResult) -> Void) {
+    func login(email: String, password: String, completionHandler loginCompletionHandler: @escaping (LoginResult) -> Void) {
         
         let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: Methods.Session))
         
@@ -32,12 +32,12 @@ class UdacityAPI: NetworkAPI {
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             if error != nil {
-                completionHandler(.networkFailure)
+                loginCompletionHandler(.networkFailure)
                 return
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                completionHandler(.loginFailure)
+                loginCompletionHandler(.loginFailure)
                 return
             }
             
@@ -45,14 +45,15 @@ class UdacityAPI: NetworkAPI {
                 let account = parsedResult["account"] as? [String: AnyObject],
                 let userID = account["key"] as? String else {
                     debugPrint("Something went wrong with parsing json data ...")
-                    completionHandler(.networkFailure)
+                    loginCompletionHandler(.networkFailure)
                     return
             }
             
             debugPrint("Parsed JSON Data: \(parsedResult)")
             
             self.userID = userID
-            completionHandler(.success)
+            
+            self.getStudentName(completionHandler: loginCompletionHandler)
             
         }
         task.resume()
@@ -88,10 +89,64 @@ class UdacityAPI: NetworkAPI {
             print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
             
             self.userID = nil
+        
             
         }
         
         task.resume()
+    }
+    
+    func getStudentName(completionHandler getStudentNameCompletionHandler: @escaping (LoginResult) -> Void) {
+        
+        guard let userID = userID else {
+            assertionFailure("impossible: userID unset while trying to get student name")
+            getStudentNameCompletionHandler(.loginFailure)
+            return
+        }
+        
+        let method = substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: method))
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if error != nil {
+                getStudentNameCompletionHandler(.networkFailure)
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                getStudentNameCompletionHandler(.networkFailure)
+                return
+            }
+            
+            guard let parsedResult = self.convertData(data) as? [String: AnyObject],
+                let user = parsedResult["user"] as? [String: AnyObject],
+                let firstName = user["first_name"] as? String,
+                let lastName = user["last_name"] as? String else {
+                    debugPrint("Something went wrong with parsing json data ...")
+                    getStudentNameCompletionHandler(.networkFailure)
+                    return
+            }
+            
+            
+            self.firstName = firstName
+            self.lastName = lastName
+            
+            debugPrint("Student Name \(self.firstName) \(self.lastName)")
+            
+            getStudentNameCompletionHandler(.success)
+            
+        }
+        
+        task.resume()
+    }
+    
+    // substitute the key for the value that is contained within the method name
+    private func substituteKeyInMethod(_ method: String, key: String, value: String) -> String? {
+        if method.range(of: "{\(key)}") != nil {
+            return method.replacingOccurrences(of: "{\(key)}", with: value)
+        } else {
+            return nil
+        }
     }
     
     // create a URL from parameters
