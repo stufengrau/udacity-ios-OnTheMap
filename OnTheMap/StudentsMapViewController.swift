@@ -12,10 +12,19 @@ import MapKit
 class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorOuterView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorOuterView.isHidden = true
         getStudentInformations()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshData()
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
@@ -32,7 +41,9 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     private func getStudentInformations() {
         debugPrint("getStudentInformations called.")
+        enableUI(false)
         ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
+            self.enableUI(true)
             switch(networkRequestResult) {
             case .networkFailure:
                 self.showAlert("Download of Student Informations failed. Try again later.")
@@ -83,6 +94,19 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         DispatchQueue.main.async {
             self.createAnnotations()
       }
+    }
+    
+    private func enableUI(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            
+            if enabled {
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorOuterView.isHidden = true
+            } else {
+                self.activityIndicatorOuterView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            }
+        }
     }
     
     // MARK: - MKMapViewDelegate

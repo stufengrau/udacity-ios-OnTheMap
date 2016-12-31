@@ -5,17 +5,29 @@
 //  Created by heike on 29/12/2016.
 //  Copyright © 2016 stufengrau. All rights reserved.
 //
+// http://stackoverflow.com/questions/29311093/place-activity-indicator-over-uitable-view/29311130
 
 import UIKit
 
-class StudentsTableViewController: UITableViewController {
+class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorOuterView: UIView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStudentInformations()
+        
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorOuterView.isHidden = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshData()
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
@@ -33,16 +45,15 @@ class StudentsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        debugPrint(ParseAPI.sharedInstance().studentInformations.count)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ParseAPI.sharedInstance().studentInformations.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath)
         let student = ParseAPI.sharedInstance().studentInformations[indexPath.row]
@@ -54,7 +65,7 @@ class StudentsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let mediaURL = URL(string: ParseAPI.sharedInstance().studentInformations[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
         }
@@ -62,7 +73,9 @@ class StudentsTableViewController: UITableViewController {
     
     private func getStudentInformations() {
         debugPrint("getStudentInformations called.")
+        enableUI(false)
         ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
+            self.enableUI(true)
             switch(networkRequestResult) {
             case .networkFailure:
                 self.showAlert("Download of Student Informations failed. Try again later.")
@@ -77,41 +90,20 @@ class StudentsTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    private func enableUI(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            
+            if enabled {
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorOuterView.isHidden = true
+            } else {
+                self.activityIndicatorView.startAnimating()
+                self.activityIndicatorOuterView.isHidden = false
+            }
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
