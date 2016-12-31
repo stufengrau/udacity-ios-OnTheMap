@@ -15,11 +15,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        activityIndicatorView.hidesWhenStopped = true
     }
 
 
@@ -79,8 +83,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.signUpButton.isEnabled = enabled
             
             if enabled {
+                self.activityIndicatorView.stopAnimating()
                 self.loginButton.alpha = 1.0
             } else {
+                self.activityIndicatorView.startAnimating()
                 self.loginButton.alpha = 0.5
             }
         }
