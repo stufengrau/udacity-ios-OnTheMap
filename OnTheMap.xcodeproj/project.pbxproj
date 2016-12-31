@@ -57,6 +57,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E21678CA1E1820F4006163A9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E221EBF71E16CC4200056000 /* ViewControllerExtension.swift */,
+				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
+				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
+				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
+				E221EBFB1E170CDF00056000 /* PostInformationViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		E21C20981E155C68005E48A9 /* NetworkCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,14 +101,10 @@
 		E23C9DF01E1309AF0004BAD9 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				E21C20981E155C68005E48A9 /* NetworkCode */,
 				E23C9DF11E1309AF0004BAD9 /* AppDelegate.swift */,
-				E221EBF71E16CC4200056000 /* ViewControllerExtension.swift */,
-				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
 				E23C9E0D1E152BA70004BAD9 /* StudentInformation.swift */,
-				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
-				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
-				E221EBFB1E170CDF00056000 /* PostInformationViewController.swift */,
+				E21C20981E155C68005E48A9 /* NetworkCode */,
+				E21678CA1E1820F4006163A9 /* ViewControllers */,
 				E23C9DF51E1309AF0004BAD9 /* Main.storyboard */,
 				E23C9DF81E1309AF0004BAD9 /* Assets.xcassets */,
 				E23C9DFA1E1309AF0004BAD9 /* LaunchScreen.storyboard */,
