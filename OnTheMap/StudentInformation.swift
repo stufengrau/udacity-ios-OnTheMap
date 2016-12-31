@@ -15,6 +15,7 @@ struct StudentInformation {
     let mediaURL: String
     let latitude: Double
     let longitude: Double
+    let updatedAt: Date
     
     init?(_ studentLocation: [String:AnyObject]) {
         var firstName: String?
@@ -22,6 +23,14 @@ struct StudentInformation {
         var mediaURL: String?
         var latitude: Double?
         var longitude: Double?
+        var updatedAt: Date?
+        
+        
+        // https://stackoverflow.com/questions/5185230/converting-an-iso-8601-timestamp-into-an-nsdate-how-does-one-deal-with-the-utc
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
         for (key, value) in studentLocation {
             switch key {
             case "firstName":
@@ -34,16 +43,19 @@ struct StudentInformation {
                 latitude = value as? Double
             case "longitude":
                 longitude = value as? Double
+            case "updatedAt":
+                updatedAt = dateFormatter.date(from: value as! String)
             default:
                 break
             }
         }
-        if let firstName = firstName, let lastName = lastName, let mediaURL = mediaURL, let latitude = latitude, let longitude = longitude {
+        if let firstName = firstName, let lastName = lastName, let mediaURL = mediaURL, let latitude = latitude, let longitude = longitude, let updatedAt = updatedAt {
             self.firstName = firstName
             self.lastName = lastName
             self.mediaURL = mediaURL
             self.latitude = latitude
             self.longitude = longitude
+            self.updatedAt = updatedAt
         } else {
             return nil
         }
@@ -66,6 +78,7 @@ func createStudentLocations(_ studentLocationsResult: [String:AnyObject]) -> [St
             result.append(studentLocation)
         }
     }
+
+    return result.sorted(by: {return $0.updatedAt > $1.updatedAt})
     
-    return result
 }
