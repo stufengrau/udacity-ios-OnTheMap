@@ -28,4 +28,15 @@ extension ParseAPI {
         
     }
     
+    // MARK: Parameter Keys
+    struct ParameterKeys {
+        static let ParseQuery = "where"
+    }
+    
+    // MARK: JSON Body Keys
+    struct JSONBodyKeys {
+        static let UniqueKey = "uniqueKey"
+
+    }
+    
 }
