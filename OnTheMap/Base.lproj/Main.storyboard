@@ -300,15 +300,32 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNC-ne-1jf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="5sB-6K-mwh">
+                                        <rect key="frame" x="177" y="291" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="5sB-6K-mwh" firstAttribute="centerX" secondItem="BNC-ne-1jf" secondAttribute="centerX" id="WJ3-qf-zDs"/>
+                                    <constraint firstItem="5sB-6K-mwh" firstAttribute="centerY" secondItem="BNC-ne-1jf" secondAttribute="centerY" id="vwX-iO-cIh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1657515913" green="0.19940866530000001" blue="0.2393306047" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="vc8-Ft-RGN" firstAttribute="top" secondItem="BNC-ne-1jf" secondAttribute="bottom" id="0rd-yF-1KK"/>
                             <constraint firstItem="0Fk-gw-G7U" firstAttribute="leading" secondItem="lNU-BW-MEo" secondAttribute="leading" id="2De-mj-XNk"/>
                             <constraint firstItem="vc8-Ft-RGN" firstAttribute="top" secondItem="0Fk-gw-G7U" secondAttribute="bottom" id="JnZ-lD-Z0b"/>
                             <constraint firstItem="0Fk-gw-G7U" firstAttribute="top" secondItem="er9-JM-5CD" secondAttribute="bottom" id="N1Y-xJ-HNQ"/>
                             <constraint firstItem="RDn-1v-q56" firstAttribute="leading" secondItem="lNU-BW-MEo" secondAttribute="leading" id="O5T-eK-Pxc"/>
                             <constraint firstAttribute="bottom" secondItem="RDn-1v-q56" secondAttribute="bottom" id="Rks-vA-I0l"/>
+                            <constraint firstAttribute="trailing" secondItem="BNC-ne-1jf" secondAttribute="trailing" id="VOH-qj-W9D"/>
                             <constraint firstAttribute="trailing" secondItem="RDn-1v-q56" secondAttribute="trailing" id="ao6-E9-nov"/>
+                            <constraint firstItem="BNC-ne-1jf" firstAttribute="leading" secondItem="lNU-BW-MEo" secondAttribute="leading" id="apu-7R-xxf"/>
+                            <constraint firstItem="BNC-ne-1jf" firstAttribute="top" secondItem="er9-JM-5CD" secondAttribute="bottom" id="ju6-5A-9x4"/>
                             <constraint firstItem="RDn-1v-q56" firstAttribute="top" secondItem="er9-JM-5CD" secondAttribute="bottom" id="vvE-tf-QCT"/>
                             <constraint firstAttribute="trailing" secondItem="0Fk-gw-G7U" secondAttribute="trailing" id="zzf-xb-4a8"/>
                         </constraints>
@@ -321,6 +338,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorOuterView" destination="BNC-ne-1jf" id="f1K-AQ-c0l"/>
+                        <outlet property="activityIndicatorView" destination="5sB-6K-mwh" id="yz2-tC-F2m"/>
                         <outlet property="enterLinkStackView" destination="0Fk-gw-G7U" id="Q6z-bc-x2G"/>
                         <outlet property="findLocationButton" destination="ux9-2L-7Za" id="oX2-m1-NKX"/>
                         <outlet property="location" destination="2rw-Cj-x30" id="TLb-9Z-THL"/>
