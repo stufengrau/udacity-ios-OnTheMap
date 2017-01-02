@@ -50,9 +50,13 @@ struct StudentInformation {
             }
         }
         if let firstName = firstName, let lastName = lastName, let mediaURL = mediaURL, let latitude = latitude, let longitude = longitude, let updatedAt = updatedAt {
+            if (doesURLBeginWithProtocol(url: mediaURL)) {
+                self.mediaURL = mediaURL
+            } else {
+                self.mediaURL = prefixURLWithProtocol(url: mediaURL)
+            }
             self.firstName = firstName
             self.lastName = lastName
-            self.mediaURL = mediaURL
             self.latitude = latitude
             self.longitude = longitude
             self.updatedAt = updatedAt
@@ -81,4 +85,12 @@ func createStudentLocations(_ studentLocationsResult: [String:AnyObject]) -> [St
 
     return result.sorted(by: {return $0.updatedAt > $1.updatedAt})
     
+}
+
+func doesURLBeginWithProtocol(url: String) -> Bool {
+    return url.hasPrefix("http://") || url.hasPrefix("https://")
+}
+
+func prefixURLWithProtocol(url: String) -> String {
+    return "http://".appending(url)
 }
