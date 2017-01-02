@@ -41,7 +41,7 @@ class UdacityAPI: NetworkAPI {
                 return
             }
             
-            guard let parsedResult = self.convertData(data) as? [String: AnyObject],
+            guard let parsedResult = self.convertData(self.trimData(data)) as? [String: AnyObject],
                 let account = parsedResult["account"] as? [String: AnyObject],
                 let userID = account["key"] as? String else {
                     debugPrint("Something went wrong with parsing json data ...")
@@ -58,42 +58,6 @@ class UdacityAPI: NetworkAPI {
         }
         task.resume()
         
-    }
-    
-    
-    func logout() {
-        
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: Methods.Session))
-        
-        request.httpMethod = "DELETE"
-        
-        var xsrfCookie: HTTPCookie? = nil
-        let sharedCookieStorage = HTTPCookieStorage.shared
-        
-        for cookie in sharedCookieStorage.cookies! {
-            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
-        }
-        
-        if let xsrfCookie = xsrfCookie {
-            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
-        }
-        
-        
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            if error != nil {
-                return
-            }
-            
-            let range = Range(uncheckedBounds: (5, data!.count))
-            let newData = data?.subdata(in: range)
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-            
-            self.userID = nil
-        
-            
-        }
-        
-        task.resume()
     }
     
     func getStudentName(completionHandler getStudentNameCompletionHandler: @escaping (LoginResult) -> Void) {
@@ -118,7 +82,7 @@ class UdacityAPI: NetworkAPI {
                 return
             }
             
-            guard let parsedResult = self.convertData(data) as? [String: AnyObject],
+            guard let parsedResult = self.convertData(self.trimData(data)) as? [String: AnyObject],
                 let user = parsedResult["user"] as? [String: AnyObject],
                 let firstName = user["first_name"] as? String,
                 let lastName = user["last_name"] as? String else {
@@ -126,7 +90,6 @@ class UdacityAPI: NetworkAPI {
                     getStudentNameCompletionHandler(.networkFailure)
                     return
             }
-            
             
             self.firstName = firstName
             self.lastName = lastName
@@ -140,13 +103,37 @@ class UdacityAPI: NetworkAPI {
         task.resume()
     }
     
-    // substitute the key for the value that is contained within the method name
-    private func substituteKeyInMethod(_ method: String, key: String, value: String) -> String? {
-        if method.range(of: "{\(key)}") != nil {
-            return method.replacingOccurrences(of: "{\(key)}", with: value)
-        } else {
-            return nil
+    func logout() {
+        
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: Methods.Session))
+        
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
         }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if error != nil {
+                return
+            }
+            
+            // error handling?
+        }
+        
+        self.userID = nil
+        self.firstName = nil
+        self.lastName = nil
+        ParseAPI.sharedInstance().objectID = nil
+        
+        task.resume()
     }
     
     // create a URL from parameters
@@ -160,17 +147,15 @@ class UdacityAPI: NetworkAPI {
         return components.url!
     }
     
-    // given raw JSON, return a usable Foundation object
-    private func convertData(_ data: Data?) -> AnyObject? {
+    // skip first 5 characters from Udacity response
+    private func trimData(_ data: Data?) -> Data? {
         
         guard let data = data else {
             return nil
         }
         
         let range = Range(uncheckedBounds: (5, data.count))
-        let newData = data.subdata(in: range)
-        
-        return try? JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+        return data.subdata(in: range)
         
     }
     

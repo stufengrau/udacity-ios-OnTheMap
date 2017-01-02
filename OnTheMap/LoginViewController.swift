@@ -40,7 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func signUpPressed(_ sender: UIButton) {
-        let signUpURL = "https://www.udacity.com/account/auth#!/signup"
+        let signUpURL = UdacityAPI.Constants.SignUpURL
         UIApplication.shared.open(URL(string: signUpURL)!, options: [:], completionHandler: nil)
     }
     

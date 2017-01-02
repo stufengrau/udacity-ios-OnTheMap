@@ -123,17 +123,6 @@ class ParseAPI: NetworkAPI {
         return components.url!
     }
     
-    // given raw JSON, return a usable Foundation object
-    private func convertData(_ data: Data?) -> AnyObject? {
-        
-        guard let data = data else {
-            return nil
-        }
-        
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-        
-    }
-    
     
     // MARK: Shared Instance
     

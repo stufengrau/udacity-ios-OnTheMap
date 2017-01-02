@@ -10,6 +10,23 @@ import Foundation
 
 class NetworkAPI {
     
-     //var userID: String?
+    // substitute the key for the value that is contained within the method name
+    func substituteKeyInMethod(_ method: String, key: String, value: String) -> String? {
+        if method.range(of: "{\(key)}") != nil {
+            return method.replacingOccurrences(of: "{\(key)}", with: value)
+        } else {
+            return nil
+        }
+    }
+    
+    // given raw JSON, return a usable Foundation object
+    func convertData(_ data: Data?) -> AnyObject? {
+        
+        guard let data = data else {
+            return nil
+        }
+        
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+    }
     
 }

@@ -10,22 +10,22 @@ import Foundation
 
 extension ParseAPI {
     
-    // MARK: Constants
+    // MARK: URL Constants
     struct Constants {
-        
-        // MARK: URLs
         static let ApiScheme = "https"
         static let ApiHost = "parse.udacity.com"
         static let ApiPath = "/parse"
-        
     }
     
     // MARK: Methods
     struct Methods {
-        
-        // MARK: Session
         static let StudentLocation = "/classes/StudentLocation"
-        
+        static let UpdateStudentLocation = "\(StudentLocation)/{id}"
+    }
+    
+    // MARK: URL Keys
+    struct URLKeys {
+        static let ObjectID = "id"
     }
     
     // MARK: Parameter Keys
@@ -36,7 +36,12 @@ extension ParseAPI {
     // MARK: JSON Body Keys
     struct JSONBodyKeys {
         static let UniqueKey = "uniqueKey"
-
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let Location = "mapString"
+        static let MediaURL = "mediaURL"
+        static let Lat = "latitude"
+        static let Lon = "longitude"
     }
     
 }
