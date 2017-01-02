@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pGp-Vc-5rw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="56"/>
+            <point key="canvasLocation" x="1650" y="57"/>
         </scene>
         <!--studentsMap-->
         <scene sceneID="Aqu-aH-wAq">
@@ -163,7 +163,6 @@
                             <barButtonItem image="PinIcon" id="bKZ-Wo-0gR">
                                 <connections>
                                     <action selector="pinLocationPressed:" destination="dDR-ST-kOx" id="TcQ-o8-f6c"/>
-                                    <segue destination="YBt-r2-wyF" kind="presentation" id="os5-A0-uSQ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -200,7 +199,7 @@
         <!--Post Information View Controller-->
         <scene sceneID="lT0-lc-cOY">
             <objects>
-                <viewController storyboardIdentifier="PostInformationView" id="wwl-a5-Lgv" customClass="PostInformationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wwl-a5-Lgv" customClass="PostInformationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="er9-JM-5CD"/>
                         <viewControllerLayoutGuide type="bottom" id="vc8-Ft-RGN"/>
@@ -365,7 +364,7 @@
         <!--Navigation Controller-->
         <scene sceneID="XL6-lt-xU2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YBt-r2-wyF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="postInformationView" automaticallyAdjustsScrollViewInsets="NO" id="YBt-r2-wyF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zz6-be-85U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -453,7 +452,7 @@
                             <constraint firstItem="K8X-Jl-tBf" firstAttribute="top" secondItem="vRw-xF-poX" secondAttribute="bottom" id="uFl-vd-Sfh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UxC-Z5-abS">
+                    <navigationItem key="navigationItem" title="On the Map" id="UxC-Z5-abS">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="V7z-jB-WsA">
                             <connections>
                                 <action selector="logoutPressed:" destination="tvG-QF-Rc9" id="KUl-0C-yTs"/>
@@ -468,7 +467,6 @@
                             <barButtonItem image="PinIcon" id="9PF-Nb-Trl">
                                 <connections>
                                     <action selector="pinLocationPressed:" destination="tvG-QF-Rc9" id="G1x-Gc-LAj"/>
-                                    <segue destination="YBt-r2-wyF" kind="presentation" id="Gz0-Rd-BvL"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -491,7 +489,4 @@
         <image name="RefreshIcon" width="24" height="24"/>
         <image name="UdacityLogo" width="62" height="62"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="os5-A0-uSQ"/>
-    </inferredMetricsTieBreakers>
 </document>

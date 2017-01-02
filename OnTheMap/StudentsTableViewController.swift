@@ -39,7 +39,7 @@ class StudentsTableViewController: StudentsLocationsViewController, UITableViewD
     }
     
     @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
-        //checkStudentLocation()
+        checkStudentLocation()
     }
     
     override func refreshData() {

@@ -13,6 +13,12 @@ enum NetworkRequestResult {
     case networkFailure
 }
 
+enum CheckStudentLocationResult {
+    case networkFailure
+    case locationExists
+    case noLocationExists
+}
+
 class ParseAPI: NetworkAPI {
     
     private var session = URLSession.shared
@@ -53,7 +59,7 @@ class ParseAPI: NetworkAPI {
         task.resume()
     }
     
-    func getStudentLocation(completionHandler: @escaping (NetworkRequestResult) -> Void) {
+    func getStudentLocation(completionHandler: @escaping (CheckStudentLocationResult) -> Void) {
         
         guard let userID = UdacityAPI.sharedInstance().userID else {
             assertionFailure("Impossible: userID unset while trying to get student location")
@@ -89,9 +95,10 @@ class ParseAPI: NetworkAPI {
             if let result = parsedResult["results"] as? [String: AnyObject],
                 let objectID = result["objectID"] as? String {
                 self.objectID = objectID
+                completionHandler(.locationExists)
             }
             
-            completionHandler(.success)
+            completionHandler(.noLocationExists)
             
         }
         task.resume()

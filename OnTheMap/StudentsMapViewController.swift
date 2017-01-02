@@ -37,7 +37,7 @@ class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDeleg
     }
     
     @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
-        //checkStudentLocation()
+        checkStudentLocation()
     }
     
     override func refreshData() {
