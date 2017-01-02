@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class StudentsMapViewController: UIViewController, MKMapViewDelegate {
+class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -20,7 +20,8 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorOuterView.isHidden = true
-        getStudentInformations()
+        
+        getStudentsInformation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,75 +29,24 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
-        UdacityAPI.sharedInstance().logout()
-        self.dismiss(animated: true, completion: nil)
+        logoutAndDismiss()
     }
     
     @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
-        getStudentInformations()
+        getStudentsInformation()
     }
     
     @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
+        //checkStudentLocation()
     }
     
-    private func getStudentInformations() {
-        debugPrint("getStudentInformations called.")
-        enableUI(false)
-        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
-            self.enableUI(true)
-            switch(networkRequestResult) {
-            case .networkFailure:
-                self.showAlert("Download of Student Informations failed. Try again later.")
-            case .success:
-                debugPrint(ParseAPI.sharedInstance().studentInformations.count)
-                self.refreshData()
-            }
-        }
-    }
-    
-    private func createAnnotations() {
-        
-        debugPrint("createAnnotations called.")
-
-        var annotations = [MKPointAnnotation]()
-        
-        for student in ParseAPI.sharedInstance().studentInformations {
-            
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
-            let lat = CLLocationDegrees(student.latitude)
-            let long = CLLocationDegrees(student.longitude)
-            
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let first = student.firstName
-            let last = student.lastName
-            let mediaURL = student.mediaURL
-            
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
-            
-            // Finally we place the annotation in an array of annotations.
-            annotations.append(annotation)
-        }
-        
-        // When the array is complete, we add the annotations to the map.
-        debugPrint(annotations.count)
-        self.mapView.addAnnotations(annotations)
-
-    }
-    
-    private func refreshData() {
+    override func refreshData() {
         DispatchQueue.main.async {
             self.createAnnotations()
-      }
+        }
     }
     
-    private func enableUI(_ enabled: Bool) {
+    override func enableUI(_ enabled: Bool) {
         DispatchQueue.main.async {
             
             if enabled {
@@ -145,6 +95,43 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
                 }
             }
         }
+    }
+    
+    
+    private func createAnnotations() {
+        
+        debugPrint("createAnnotations called.")
+        
+        var annotations = [MKPointAnnotation]()
+        
+        for student in ParseAPI.sharedInstance().studentInformations {
+            
+            // Notice that the float values are being used to create CLLocationDegree values.
+            // This is a version of the Double type.
+            let lat = CLLocationDegrees(student.latitude)
+            let long = CLLocationDegrees(student.longitude)
+            
+            // The lat and long are used to create a CLLocationCoordinates2D instance.
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            let first = student.firstName
+            let last = student.lastName
+            let mediaURL = student.mediaURL
+            
+            // Here we create the annotation and set its coordiate, title, and subtitle properties
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(first) \(last)"
+            annotation.subtitle = mediaURL
+            
+            // Finally we place the annotation in an array of annotations.
+            annotations.append(annotation)
+        }
+        
+        // When the array is complete, we add the annotations to the map.
+        debugPrint(annotations.count)
+        self.mapView.addAnnotations(annotations)
+        
     }
     
 

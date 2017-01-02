@@ -9,7 +9,7 @@
 
 import UIKit
 
-class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StudentsTableViewController: StudentsLocationsViewController, UITableViewDelegate, UITableViewDataSource {
  
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicatorOuterView: UIView!
@@ -31,15 +31,34 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
-        UdacityAPI.sharedInstance().logout()
-        self.dismiss(animated: true, completion: nil)
+        logoutAndDismiss()
     }
     
     @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
-        getStudentInformations()
+        getStudentsInformation()
     }
     
     @IBAction func pinLocationPressed(_ sender: UIBarButtonItem) {
+        //checkStudentLocation()
+    }
+    
+    override func refreshData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func enableUI(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            
+            if enabled {
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorOuterView.isHidden = true
+            } else {
+                self.activityIndicatorView.startAnimating()
+                self.activityIndicatorOuterView.isHidden = false
+            }
+        }
     }
     
     
@@ -68,39 +87,6 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let mediaURL = URL(string: ParseAPI.sharedInstance().studentInformations[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
-        }
-    }
-    
-    private func getStudentInformations() {
-        debugPrint("getStudentInformations called.")
-        enableUI(false)
-        ParseAPI.sharedInstance().getStudentLocations { (networkRequestResult) in
-            self.enableUI(true)
-            switch(networkRequestResult) {
-            case .networkFailure:
-                self.showAlert("Download of Student Informations failed. Try again later.")
-            case .success:
-                self.refreshData()
-            }
-        }
-    }
-    
-    private func refreshData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    private func enableUI(_ enabled: Bool) {
-        DispatchQueue.main.async {
-            
-            if enabled {
-                self.activityIndicatorView.stopAnimating()
-                self.activityIndicatorOuterView.isHidden = true
-            } else {
-                self.activityIndicatorView.startAnimating()
-                self.activityIndicatorOuterView.isHidden = false
-            }
         }
     }
 

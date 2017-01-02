@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E21678CE1E19B74D006163A9 /* StudentsLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21678CD1E19B74D006163A9 /* StudentsLocationsViewController.swift */; };
 		E221EBF81E16CC4200056000 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E221EBF71E16CC4200056000 /* ViewControllerExtension.swift */; };
 		E221EBFC1E170CDF00056000 /* PostInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E221EBFB1E170CDF00056000 /* PostInformationViewController.swift */; };
 		E23C9DF21E1309AF0004BAD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9DF11E1309AF0004BAD9 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E21678CD1E19B74D006163A9 /* StudentsLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsLocationsViewController.swift; sourceTree = "<group>"; };
 		E221EBF71E16CC4200056000 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		E221EBFB1E170CDF00056000 /* PostInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostInformationViewController.swift; sourceTree = "<group>"; };
 		E23C9DEE1E1309AF0004BAD9 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 			children = (
 				E221EBF71E16CC4200056000 /* ViewControllerExtension.swift */,
 				E23C9DF31E1309AF0004BAD9 /* LoginViewController.swift */,
+				E21678CD1E19B74D006163A9 /* StudentsLocationsViewController.swift */,
 				E23C9E071E151FC60004BAD9 /* StudentsMapViewController.swift */,
 				E23C9E091E152B1C0004BAD9 /* StudentsTableViewController.swift */,
 				E221EBFB1E170CDF00056000 /* PostInformationViewController.swift */,
@@ -189,6 +192,7 @@
 				E23C9E121E15314B0004BAD9 /* ParseAPI.swift in Sources */,
 				E23C9E1F1E154D0F0004BAD9 /* HiddenConstants.swift in Sources */,
 				E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */,
+				E21678CE1E19B74D006163A9 /* StudentsLocationsViewController.swift in Sources */,
 				E23C9E141E1531620004BAD9 /* ParseConstants.swift in Sources */,
 				E23C9DF41E1309AF0004BAD9 /* LoginViewController.swift in Sources */,
 				E23C9E101E152F0B0004BAD9 /* NetworkAPI.swift in Sources */,
