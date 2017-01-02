@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pGp-Vc-5rw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="S19-5M-a6H">
-                                <rect key="frame" x="156" y="90" width="62" height="62"/>
+                                <rect key="frame" x="156.5" y="90" width="62" height="62"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-OT-gW7">
                                 <rect key="frame" x="16" y="202" width="343" height="134.5"/>
@@ -40,7 +40,7 @@
                                         <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" red="0.51665717283530732" green="0.59763657793855374" blue="0.67725030598020308" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -52,7 +52,7 @@
                                         <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Vc3-aK-Udy">
-                                <rect key="frame" x="177" y="323.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1657515913" green="0.19940866530000001" blue="0.2393306047" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="57"/>
+            <point key="canvasLocation" x="1450" y="55"/>
         </scene>
         <!--studentsMap-->
         <scene sceneID="Aqu-aH-wAq">
@@ -163,6 +163,7 @@
                             <barButtonItem image="PinIcon" id="bKZ-Wo-0gR">
                                 <connections>
                                     <action selector="pinLocationPressed:" destination="dDR-ST-kOx" id="TcQ-o8-f6c"/>
+                                    <segue destination="YBt-r2-wyF" kind="presentation" id="Jr0-Ot-AXe"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -194,7 +195,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDl-D1-OS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="57"/>
+            <point key="canvasLocation" x="2274" y="54"/>
         </scene>
         <!--Post Information View Controller-->
         <scene sceneID="lT0-lc-cOY">
@@ -208,45 +209,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RDn-1v-q56" userLabel="Location Stack View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLe-bk-GBW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Z5p-pB-YAL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q2j-Df-Tlb">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="403"/>
-                                        <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                <color key="value" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEu-yG-bmp">
-                                        <rect key="frame" x="0.0" y="503" width="375" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="yqq-l3-PrI"/>
-                                        </constraints>
-                                        <state key="normal" title="Find on the Map">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="findLocation:" destination="wwl-a5-Lgv" eventType="touchUpInside" id="ssS-Qd-TMq"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Fk-gw-G7U" userLabel="Enter Link Stack View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
@@ -258,7 +220,7 @@
                                         </constraints>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -280,6 +242,60 @@
                                         <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="submitInformation:" destination="wwl-a5-Lgv" eventType="touchUpInside" id="nI5-ev-7YJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RDn-1v-q56" userLabel="Location Stack View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLe-bk-GBW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Z5p-pB-YAL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsM-tv-h7N" userLabel="EnterLocationView">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="403"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2rw-Cj-x30">
+                                                <rect key="frame" x="0.0" y="180" width="375" height="42"/>
+                                                <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="Qdg-Z8-vgg"/>
+                                                </constraints>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.26391422749999999" green="0.30529454350000002" blue="0.34519922730000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="2rw-Cj-x30" firstAttribute="centerX" secondItem="OsM-tv-h7N" secondAttribute="centerX" id="B8u-ho-DjE"/>
+                                            <constraint firstItem="2rw-Cj-x30" firstAttribute="width" secondItem="OsM-tv-h7N" secondAttribute="width" id="M9S-P6-7Ez"/>
+                                            <constraint firstItem="2rw-Cj-x30" firstAttribute="centerY" secondItem="OsM-tv-h7N" secondAttribute="centerY" id="m7k-X4-L5R"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="w8Y-Fj-MFJ" appends="YES" id="XM6-Lo-Kaj"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux9-2L-7Za">
+                                        <rect key="frame" x="0.0" y="503" width="375" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="AeF-nc-27T"/>
+                                        </constraints>
+                                        <state key="normal" title="Find on the Map"/>
+                                        <connections>
+                                            <action selector="findLocation:" destination="wwl-a5-Lgv" eventType="touchUpInside" id="flo-cE-zNR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -306,12 +322,20 @@
                     </navigationItem>
                     <connections>
                         <outlet property="enterLinkStackView" destination="0Fk-gw-G7U" id="Q6z-bc-x2G"/>
-                        <outlet property="location" destination="q2j-Df-Tlb" id="Wxt-WD-2Ra"/>
+                        <outlet property="findLocationButton" destination="ux9-2L-7Za" id="oX2-m1-NKX"/>
+                        <outlet property="location" destination="2rw-Cj-x30" id="TLb-9Z-THL"/>
                         <outlet property="locationStackView" destination="RDn-1v-q56" id="Gy5-r9-LGE"/>
+                        <outlet property="mapView" destination="5Nf-74-3BT" id="vAE-0n-rwr"/>
                         <outlet property="mediaURL" destination="9Si-px-eBs" id="EOk-9M-vf5"/>
+                        <outlet property="submitInformationButton" destination="lno-nD-z0U" id="evN-mk-8cY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9g-UB-iB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w8Y-Fj-MFJ">
+                    <connections>
+                        <action selector="acitvateLocationTextField:" destination="wwl-a5-Lgv" id="6Dn-Vf-Wgc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="6024.8000000000002" y="96.7016491754123"/>
         </scene>
