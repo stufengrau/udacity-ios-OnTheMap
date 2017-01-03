@@ -30,4 +30,11 @@ extension UdacityAPI {
         static let UserID = "id"
     }
     
+    // MARK: JSON Body Keys
+    struct JSONBodyKeys {
+        static let Udacity = "udacity"
+        static let Username = "username"
+        static let Password = "password"
+    }
+    
 }

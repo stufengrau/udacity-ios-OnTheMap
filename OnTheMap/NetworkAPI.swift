@@ -29,4 +29,26 @@ class NetworkAPI {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
     }
     
+    func getJSONString(_ jsonDict: [String:String]) -> String {
+        
+        let escapedQuoteSign = "\""
+        let keyValueDelimeter = ":"
+        let objectDelimiter = ","
+        let beginJSON = "{"
+        let endJSON = "}"
+        
+        var jsonString = beginJSON
+        
+        for (key, value) in jsonDict {
+            jsonString.append("\(escapedQuoteSign)\(key)\(escapedQuoteSign)\(keyValueDelimeter)\(escapedQuoteSign)\(value)\(escapedQuoteSign)\(objectDelimiter)")
+        }
+        
+        // remove last comma
+        jsonString.remove(at: jsonString.index(before: jsonString.endIndex))
+        jsonString.append(endJSON)
+        
+        return jsonString
+    }
+
+    
 }

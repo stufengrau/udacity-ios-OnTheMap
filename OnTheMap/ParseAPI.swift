@@ -67,7 +67,7 @@ class ParseAPI: NetworkAPI {
             return
         }
         
-        let queryValue = "{\"\(JSONBodyKeys.UniqueKey)\":\"\(userID)\"}"
+        let queryValue = getJSONString([JSONBodyKeys.UniqueKey : userID])
         let urlParameter = [ParameterKeys.ParseQuery : queryValue]
         
         let request = NSMutableURLRequest(url: parseURLFromParameters(withPathExtension: Methods.StudentLocation, parameters: urlParameter))
