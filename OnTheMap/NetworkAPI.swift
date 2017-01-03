@@ -5,6 +5,8 @@
 //  Created by heike on 29/12/2016.
 //  Copyright © 2016 stufengrau. All rights reserved.
 //
+//  Some general functions for the Udacity and Parse API
+//
 
 import Foundation
 
@@ -29,6 +31,7 @@ class NetworkAPI {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
     }
     
+    // given a dictionary from type [String:String], return a valid json string
     func getJSONString(_ jsonDict: [String:String]) -> String {
         
         let escapedQuoteSign = "\""
@@ -40,15 +43,21 @@ class NetworkAPI {
         var jsonString = beginJSON
         
         for (key, value) in jsonDict {
-            jsonString.append("\(escapedQuoteSign)\(key)\(escapedQuoteSign)\(keyValueDelimeter)\(escapedQuoteSign)\(value)\(escapedQuoteSign)\(objectDelimiter)")
+            // Quick Fix: "latitude" and "longitude" are needed as Double
+            // so do not put the values in escaped quotation signs
+            if (key == "latitude" || key == "longitude") {
+                jsonString.append("\(escapedQuoteSign)\(key)\(escapedQuoteSign)\(keyValueDelimeter)\(value)\(objectDelimiter)")
+            } else {
+                jsonString.append("\(escapedQuoteSign)\(key)\(escapedQuoteSign)\(keyValueDelimeter)\(escapedQuoteSign)\(value)\(escapedQuoteSign)\(objectDelimiter)")
+            }
         }
         
-        // remove last comma
+        // just to be save, remove last appended comma
         jsonString.remove(at: jsonString.index(before: jsonString.endIndex))
+        
         jsonString.append(endJSON)
         
         return jsonString
     }
-
     
 }
