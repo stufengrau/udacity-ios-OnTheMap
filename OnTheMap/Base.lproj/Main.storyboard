@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pGp-Vc-5rw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -163,7 +163,6 @@
                             <barButtonItem image="PinIcon" id="bKZ-Wo-0gR">
                                 <connections>
                                     <action selector="pinLocationPressed:" destination="dDR-ST-kOx" id="TcQ-o8-f6c"/>
-                                    <segue destination="YBt-r2-wyF" kind="presentation" id="Jr0-Ot-AXe"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -241,7 +240,7 @@
                                         </constraints>
                                         <state key="normal" title="Submit"/>
                                         <connections>
-                                            <action selector="submitInformation:" destination="wwl-a5-Lgv" eventType="touchUpInside" id="nI5-ev-7YJ"/>
+                                            <action selector="submitInformation:" destination="wwl-a5-Lgv" eventType="touchUpInside" id="iZR-cf-1dl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -269,7 +268,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.51665717280000001" green="0.59763657790000002" blue="0.67725030600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -346,7 +345,7 @@
                         <outlet property="locationStackView" destination="RDn-1v-q56" id="Gy5-r9-LGE"/>
                         <outlet property="mapView" destination="5Nf-74-3BT" id="vAE-0n-rwr"/>
                         <outlet property="mediaURL" destination="9Si-px-eBs" id="EOk-9M-vf5"/>
-                        <outlet property="submitInformationButton" destination="lno-nD-z0U" id="evN-mk-8cY"/>
+                        <outlet property="submitInformationButton" destination="lno-nD-z0U" id="CaZ-gn-lxA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9g-UB-iB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,18 +442,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vKN-uT-8di" id="P0E-N1-WlE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U8m-N6-fsQ">
-                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v8f-yj-i5L">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
