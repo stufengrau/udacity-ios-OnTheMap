@@ -25,7 +25,7 @@ extension ParseAPI {
     
     // MARK: URL Keys
     struct URLKeys {
-        static let ObjectID = "id"
+        static let ID = "id"
     }
     
     // MARK: Parameter Keys
@@ -33,15 +33,21 @@ extension ParseAPI {
         static let ParseQuery = "where"
     }
     
-    // MARK: JSON Body Keys
-    struct JSONBodyKeys {
+    // MARK: JSON Body and Response Keys
+    struct JSONKeys {
+        // Body and Response Keys
         static let UniqueKey = "uniqueKey"
         static let FirstName = "firstName"
         static let LastName = "lastName"
         static let Location = "mapString"
         static let MediaURL = "mediaURL"
-        static let Lat = "latitude"
-        static let Lon = "longitude"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        
+        // Response Keys
+        static let Results = "results"
+        static let ObjectID = "objectId"
+        static let UpdatedAt = "updatedAt"
     }
     
 }
