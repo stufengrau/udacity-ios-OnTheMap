@@ -5,29 +5,39 @@
 //  Created by heike on 29/12/2016.
 //  Copyright © 2016 stufengrau. All rights reserved.
 //
+//  This class reuses some code from Udacity Project PinSample
+//
 
 import UIKit
 import MapKit
 
 class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDelegate {
     
+    // MARK: Properties
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicatorOuterView: UIView!
     
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorOuterView.isHidden = true
         
+        // the map view is the first view after a successful login
+        // -> get Students Information for initial data load
         getStudentsInformation()
     }
     
+    // only refreshes data for the view, no new data is requested via http request
+    // e.g. if new data was requested from the server by another view, 
+    // this view will show the updated data
     override func viewWillAppear(_ animated: Bool) {
         refreshData()
     }
     
+    // MARK: IBActions
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         logoutAndDismiss()
     }
@@ -40,30 +50,9 @@ class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDeleg
         checkStudentLocation()
     }
     
-    override func refreshData() {
-        DispatchQueue.main.async {
-            self.createAnnotations()
-        }
-    }
+    // MARK: MKMapViewDelegate
     
-    override func enableUI(_ enabled: Bool) {
-        DispatchQueue.main.async {
-            
-            if enabled {
-                self.activityIndicatorView.stopAnimating()
-                self.activityIndicatorOuterView.isHidden = true
-            } else {
-                self.activityIndicatorOuterView.isHidden = false
-                self.activityIndicatorView.startAnimating()
-            }
-        }
-    }
-    
-    // MARK: - MKMapViewDelegate
-    
-    // Here we create a view with a "right callout accessory view". You might choose to look into other
-    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
-    // method in TableViewDataSource.
+    // Create a view with a "right callout accessory view".
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -97,52 +86,60 @@ class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDeleg
         }
     }
     
+    // MARK: Helper Methods
     
+    // Create Annotations to view on the map
     private func createAnnotations() {
-        
-        debugPrint("createAnnotations called.")
         
         var annotations = [MKPointAnnotation]()
         
+        // iterate over the Student Information Array to create the annotations
         for student in ParseAPI.sharedInstance().studentInformations {
             
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
+            // create CLLocationDegree values
             let lat = CLLocationDegrees(student.latitude)
             let long = CLLocationDegrees(student.longitude)
             
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
+            // create a CLLocationCoordinates2D instance
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = student.firstName
-            let last = student.lastName
-            let mediaURL = student.mediaURL
-            
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
+            // Create the annotation and set its coordiate
+            // title to the full name of the student
+            // subtitle to the provided url
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
+            annotation.title = "\(student.firstName) \(student.lastName)"
+            annotation.subtitle = student.mediaURL
             
-            // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
         }
         
-        // When the array is complete, we add the annotations to the map.
-        debugPrint(annotations.count)
-        self.mapView.addAnnotations(annotations)
-        
+        // Delete old annoations before adding new ones
+        mapView.removeAnnotations(self.mapView.annotations)
+        mapView.addAnnotations(annotations)
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // create new annotations array to display changes
+    override func refreshData() {
+        DispatchQueue.main.async {
+            self.createAnnotations()
+        }
     }
-    */
+    
+    // if UI should be disabled:
+    // show a semitransparent view with an activity indicator
+    // which overlays the main view
+    override func enableUI(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            if enabled {
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorOuterView.isHidden = true
+            } else {
+                self.activityIndicatorOuterView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            }
+        }
+    }
 
 }

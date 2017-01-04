@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: Properties
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,32 +28,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         activityIndicatorView.hidesWhenStopped = true
     }
 
-
+    // MARK: IBActions
     @IBAction func loginPressed(_ sender: UIButton) {
-        
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             showAlert("Empty Email or Password")
         } else {
+            // if a username and password is provided disable Buttons and Text Fields
+            // until an error occurs or the login is successful
             enableUI(false)
             loginToUdacity(emailTextField.text!, passwordTextField.text!)
         }
-        
     }
     
-    
     @IBAction func signUpPressed(_ sender: UIButton) {
+        // open Udacity Sign Up Page in Safari
         let signUpURL = UdacityAPI.Constants.SignUpURL
         UIApplication.shared.open(URL(string: signUpURL)!, options: [:], completionHandler: nil)
     }
     
-    
+    // MARK: Text Field Delegate
+    // dismiss keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    
+    // MARK: Helper functions
+    // try login to Udacity an provide an error message if something goes wrong
     private func loginToUdacity(_ email: String, _ password: String) {
-        
         UdacityAPI.sharedInstance().login(email: email, password: password) { (result) in
             self.enableUI(true)
             switch(result) {
@@ -65,6 +70,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // if login is successful reset text fields and show the TabBarController View
+    // with the Students Locations
     private func completeLogin() {
         DispatchQueue.main.async {
             self.emailTextField.text = ""
@@ -75,6 +82,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // disable or enable UI Elements
+    // and display an Activity View Indicator during the login process
     private func enableUI(_ enabled: Bool) {
         DispatchQueue.main.async {
             self.emailTextField.isEnabled = enabled

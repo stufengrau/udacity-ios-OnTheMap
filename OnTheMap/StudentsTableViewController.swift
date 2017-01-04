@@ -11,25 +11,27 @@ import UIKit
 
 class StudentsTableViewController: StudentsLocationsViewController, UITableViewDelegate, UITableViewDataSource {
  
+    // MARK: Properties
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicatorOuterView: UIView!
-    
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorOuterView.isHidden = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
     
+    // only refreshes data for the view, no new data is requested via http request
+    // e.g. if new data was requested from the server by another view,
+    // this view will show the updated data
     override func viewWillAppear(_ animated: Bool) {
         refreshData()
     }
     
+    // MARK: IBActions
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         logoutAndDismiss()
     }
@@ -42,27 +44,7 @@ class StudentsTableViewController: StudentsLocationsViewController, UITableViewD
         checkStudentLocation()
     }
     
-    override func refreshData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    override func enableUI(_ enabled: Bool) {
-        DispatchQueue.main.async {
-            
-            if enabled {
-                self.activityIndicatorView.stopAnimating()
-                self.activityIndicatorOuterView.isHidden = true
-            } else {
-                self.activityIndicatorView.startAnimating()
-                self.activityIndicatorOuterView.isHidden = false
-            }
-        }
-    }
-    
-    
-    // MARK: - Table view data source
+    // MARK: Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -75,30 +57,47 @@ class StudentsTableViewController: StudentsLocationsViewController, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath)
+        // get one student from the Student Information Array
         let student = ParseAPI.sharedInstance().studentInformations[indexPath.row]
         
-        cell.detailTextLabel?.text = student.mediaURL
+        // display the full name of the student and the provided link
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.detailTextLabel?.text = student.mediaURL
         cell.imageView?.image = UIImage(named: "PinIcon")
         
         return cell
     }
     
+    // This delegate method is implemented to respond to taps. It opens the system browser
+    // to the URL specified in the mediaURL property of a Student Information struct
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let mediaURL = URL(string: ParseAPI.sharedInstance().studentInformations[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: Helper functions
+    
+    // if UI should be disabled:
+    // show a semitransparent view with an activity indicator
+    // which overlays the main view
+    override func enableUI(_ enabled: Bool) {
+        DispatchQueue.main.async {
+            if enabled {
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorOuterView.isHidden = true
+            } else {
+                self.activityIndicatorOuterView.isHidden = false
+                self.activityIndicatorView.startAnimating()
+            }
+        }
     }
-    */
+    
+    // reloadData for Table View
+    override func refreshData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 
 }
