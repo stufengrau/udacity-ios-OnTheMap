@@ -175,8 +175,8 @@ class ParseAPI: NetworkAPI {
 
     // add API Key and Application ID to the HTTP Header
     private func addApiAndApplicationKeys(to request: NSMutableURLRequest) {
-        request.addValue(HiddenKeys.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(HiddenKeys.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(APIKeys.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(APIKeys.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
     }
 
     // create a URL from parameters

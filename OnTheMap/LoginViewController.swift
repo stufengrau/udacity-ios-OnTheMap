@@ -26,6 +26,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         activityIndicatorView.hidesWhenStopped = true
+        
+        // API Keys must be provided in the APIKeys.swift file
+        if (ParseAPI.APIKeys.APIKey == "" || ParseAPI.APIKeys.ApplicationID == "") {
+            showAlert("Please provide the API Keys in the APIKeys.swift file.")
+        }
     }
 
     // MARK: IBActions
