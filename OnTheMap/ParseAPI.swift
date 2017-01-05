@@ -23,7 +23,7 @@ class ParseAPI: NetworkAPI {
     
     // MARK: Properties
     private var session = URLSession.shared
-    var studentInformations = [StudentInformation]()
+    let numberOfStudentLocations = 100
     var objectID: String?
     
     // computed property to check, if user has already posted a location
@@ -34,7 +34,9 @@ class ParseAPI: NetworkAPI {
     // Get last 100 Students Locations from Parse API
     func getStudentsLocations(completionHandler: @escaping (NetworkRequestResult) -> Void) {
         
-        let request = NSMutableURLRequest(url: parseURLFromParameters(withPathExtension: Methods.StudentLocation))
+        // get the last 100 updated student locations
+        let urlParameters = [ParameterKeys.Limit : "\(numberOfStudentLocations)", ParameterKeys.Order : "-\(JSONKeys.UpdatedAt)"]
+        let request = NSMutableURLRequest(url: parseURLFromParameters(withPathExtension: Methods.StudentLocation, parameters: urlParameters))
         
         addApiAndApplicationKeys(to: request)
         
@@ -135,7 +137,7 @@ class ParseAPI: NetworkAPI {
             request = NSMutableURLRequest(url: parseURLFromParameters(withPathExtension: Methods.StudentLocation))
             request.httpMethod = "POST"
         }
-        
+
         addApiAndApplicationKeys(to: request)
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

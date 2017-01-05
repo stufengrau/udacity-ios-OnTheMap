@@ -31,6 +31,8 @@ extension ParseAPI {
     // MARK: Parameter Keys
     struct ParameterKeys {
         static let ParseQuery = "where"
+        static let Limit = "limit"
+        static let Order = "order"
     }
     
     // MARK: JSON Body and Response Keys
