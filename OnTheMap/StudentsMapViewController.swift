@@ -94,7 +94,7 @@ class StudentsMapViewController: StudentsLocationsViewController, MKMapViewDeleg
         var annotations = [MKPointAnnotation]()
         
         // iterate over the Student Information Array to create the annotations
-        for student in ParseAPI.sharedInstance().studentInformations {
+        for student in StudentInfoModel.sharedInstance().studentInformations {
             
             // create CLLocationDegree values
             let lat = CLLocationDegrees(student.latitude)

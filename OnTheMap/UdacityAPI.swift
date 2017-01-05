@@ -120,7 +120,7 @@ class UdacityAPI: NetworkAPI {
         self.firstName = nil
         self.lastName = nil
         ParseAPI.sharedInstance().objectID = nil
-        ParseAPI.sharedInstance().studentInformations = [StudentInformation]()
+        StudentInfoModel.sharedInstance().studentInformations = [StudentInformation]()
         
         let request = NSMutableURLRequest(url: udacityURLFromParameters(withPathExtension: Methods.Session))
         

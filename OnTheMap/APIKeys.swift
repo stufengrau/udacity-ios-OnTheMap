@@ -12,7 +12,9 @@ extension ParseAPI {
     
     // Please provide the API Keys here
     struct APIKeys {
+        // Parse Application ID
         static let ApplicationID = ""
+        // REST API Key
         static let APIKey = ""
     }
 }

@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 
+class StudentInfoModel {
+    
+    var studentInformations = [StudentInformation]()
+    
+    // MARK: Shared Instance
+    class func sharedInstance() -> StudentInfoModel {
+        struct Singleton {
+            static var sharedInstance = StudentInfoModel()
+        }
+        return Singleton.sharedInstance
+    }
+}
+
 // Structure for Student Information
 struct StudentInformation {
     let firstName: String
@@ -71,6 +84,7 @@ struct StudentInformation {
         }
     }
 }
+
 
 // create an array of student locations from type [StudentInformation]
 func createStudentLocations(_ studentLocationsResult: [String:AnyObject]) -> [StudentInformation] {

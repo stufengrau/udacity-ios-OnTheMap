@@ -51,14 +51,14 @@ class StudentsTableViewController: StudentsLocationsViewController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ParseAPI.sharedInstance().studentInformations.count
+        return StudentInfoModel.sharedInstance().studentInformations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentName", for: indexPath)
         // get one student from the Student Information Array
-        let student = ParseAPI.sharedInstance().studentInformations[indexPath.row]
+        let student = StudentInfoModel.sharedInstance().studentInformations[indexPath.row]
         
         // display the full name of the student and the provided link
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
@@ -71,7 +71,7 @@ class StudentsTableViewController: StudentsLocationsViewController, UITableViewD
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the mediaURL property of a Student Information struct
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let mediaURL = URL(string: ParseAPI.sharedInstance().studentInformations[indexPath.row].mediaURL) {
+        if let mediaURL = URL(string: StudentInfoModel.sharedInstance().studentInformations[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
         }
     }

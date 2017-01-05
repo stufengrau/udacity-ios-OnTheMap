@@ -56,7 +56,7 @@ class ParseAPI: NetworkAPI {
             }
             
             // create the [StudentInformation] array
-            self.studentInformations = createStudentLocations(parsedResult)
+            StudentInfoModel.sharedInstance().studentInformations = createStudentLocations(parsedResult)
             completionHandler(.success)
             
         }
@@ -101,7 +101,7 @@ class ParseAPI: NetworkAPI {
                     completionHandler(.locationDoesNotExist)
                     return
             }
-            
+
             // if user has already posted a location, save the objectID to be able to perform
             // updated to this location
             self.objectID = objectID
