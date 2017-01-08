@@ -24,7 +24,6 @@
 		E23C9E121E15314B0004BAD9 /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E111E15314B0004BAD9 /* ParseAPI.swift */; };
 		E23C9E141E1531620004BAD9 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C9E131E1531620004BAD9 /* ParseConstants.swift */; };
 		E29E1F861E1E9F7300A40125 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E1F851E1E9F7300A40125 /* APIKeys.swift */; };
-		E29E1F8A1E1EEE8F00A40125 /* HiddenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E1F891E1EEE8F00A40125 /* HiddenConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +46,6 @@
 		E23C9E111E15314B0004BAD9 /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 		E23C9E131E1531620004BAD9 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		E29E1F851E1E9F7300A40125 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
-		E29E1F891E1EEE8F00A40125 /* HiddenConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiddenConstants.swift; path = ../HiddenConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +75,6 @@
 		E21C20981E155C68005E48A9 /* NetworkCode */ = {
 			isa = PBXGroup;
 			children = (
-				E29E1F891E1EEE8F00A40125 /* HiddenConstants.swift */,
 				E29E1F851E1E9F7300A40125 /* APIKeys.swift */,
 				E23C9E0F1E152F0B0004BAD9 /* NetworkAPI.swift */,
 				E23C9E031E130FA90004BAD9 /* UdacityAPI.swift */,
@@ -193,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23C9E121E15314B0004BAD9 /* ParseAPI.swift in Sources */,
-				E29E1F8A1E1EEE8F00A40125 /* HiddenConstants.swift in Sources */,
 				E23C9E0E1E152BA70004BAD9 /* StudentInformation.swift in Sources */,
 				E21678CE1E19B74D006163A9 /* StudentsLocationsViewController.swift in Sources */,
 				E23C9E141E1531620004BAD9 /* ParseConstants.swift in Sources */,
