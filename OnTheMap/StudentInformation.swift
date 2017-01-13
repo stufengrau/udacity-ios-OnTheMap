@@ -33,12 +33,6 @@ struct StudentInformation {
     
     // initializer is failable
     init?(_ studentLocation: [String:AnyObject]) {
-        var firstName: String?
-        var lastName: String?
-        var mediaURL: String?
-        var latitude: Double?
-        var longitude: Double?
-        var updatedAt: Date?
         
         // format the date correctly
         // https://stackoverflow.com/questions/5185230/converting-an-iso-8601-timestamp-into-an-nsdate-how-does-one-deal-with-the-utc
@@ -46,41 +40,27 @@ struct StudentInformation {
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
-        // only get the values we are interested in
-        for (key, value) in studentLocation {
-            switch key {
-            case ParseAPI.JSONKeys.FirstName:
-                firstName = value as? String
-            case ParseAPI.JSONKeys.LastName:
-                lastName = value as? String
-            case ParseAPI.JSONKeys.MediaURL:
-                mediaURL = value as? String
-            case ParseAPI.JSONKeys.Latitude:
-                latitude = value as? Double
-            case ParseAPI.JSONKeys.Longitude:
-                longitude = value as? Double
-            case ParseAPI.JSONKeys.UpdatedAt:
-                updatedAt = dateFormatter.date(from: value as! String)
-            default:
-                break
-            }
+        // make sure, all necessary keys have a value
+        guard let firstName = studentLocation[ParseAPI.JSONKeys.FirstName] as? String,
+            let lastName = studentLocation[ParseAPI.JSONKeys.LastName] as? String,
+            let mediaURL = studentLocation[ParseAPI.JSONKeys.MediaURL] as? String,
+            let latitude = studentLocation[ParseAPI.JSONKeys.Latitude] as? Double,
+            let longitude = studentLocation[ParseAPI.JSONKeys.Longitude] as? Double,
+            let updatedAt = dateFormatter.date(from: studentLocation[ParseAPI.JSONKeys.UpdatedAt] as! String) else {
+                return nil
         }
-        // only create an instance if all values are provided
-        if let firstName = firstName, let lastName = lastName, let mediaURL = mediaURL, let latitude = latitude, let longitude = longitude, let updatedAt = updatedAt {
-            // check if the url is valid and begins with a protocol
-            // else prefix it with a protocol
-            if (doesURLBeginWithProtocol(url: mediaURL)) {
-                self.mediaURL = mediaURL
-            } else {
-                self.mediaURL = prefixURLWithProtocol(url: mediaURL)
-            }
-            self.firstName = firstName
-            self.lastName = lastName
-            self.latitude = latitude
-            self.longitude = longitude
-            self.updatedAt = updatedAt
+        
+        self.firstName = firstName
+        self.lastName = lastName
+        self.latitude = latitude
+        self.longitude = longitude
+        self.updatedAt = updatedAt
+        
+        // prefix url with a protocol if necessary
+        if (doesURLBeginWithProtocol(url: mediaURL)) {
+            self.mediaURL = mediaURL
         } else {
-            return nil
+            self.mediaURL = prefixURLWithProtocol(url: mediaURL)
         }
     }
 }
